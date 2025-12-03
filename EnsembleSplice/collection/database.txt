@@ -1,0 +1,13 @@
+33179749
+
+ASlive: a database for alternative splicing atlas in livestock animals
+
+32286627:rMAPS2: an update of the RNA map analysis and plotting server for alternative splicing regulation
+
+SURF: integrative analysis of a compendium of RNA-seq and CLIP-seq datasets highlights complex governing of alternative transcriptional regulation by RNA-binding proteins
+
+LncAS2Cancer: a comprehensive database for alternative splicing of lncRNAs across human cancers
+
+FLASH: ultra-fast protocol to identify RNA-protein interactions in cells
+
+dbNSFP v4: a comprehensive database of transcript-specific functional predictions and annotations for human nonsynonymous and splice-site SNVs

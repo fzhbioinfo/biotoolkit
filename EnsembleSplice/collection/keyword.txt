@@ -1,0 +1,2 @@
+(((((RT-PCR) OR RNA-Seq) OR RNA Sequencing) OR northern blot) OR Minigene) AND ((splice) OR (splicing))
+(((((((RT-PCR) OR PCR-RFLP) RNA-Seq) OR RNA Sequencing) OR northern blot) OR Minigene) OR mini-gene) AND ((splice) OR (splicing))
