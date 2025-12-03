@@ -1,0 +1,7 @@
+chrom	bp_left	bp_right	cnv_name	thres_normal	thres_hom_del	thres_support_reads	thres_mean_reads
+chr16	215395	234700	SEA	0.08	1.5	10	30
+chr16	199861	233310	THAI	0.08	1.5	10	30
+chr16	201660	232278	FIL	0.08	1.5	10	30
+chr11	5247492	5248853	Taiwanese	0.08	1.5	10	30
+chr11	5191124	5270052	Chinese	0.08	1.5	10	30
+chr11	5222877	5250289	SEA-HPFH	0.08	1.5	10	30

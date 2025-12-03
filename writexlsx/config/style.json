@@ -1,0 +1,24 @@
+{
+    "Y155": {
+        "All variants data": {
+            "reads_picture": {"type": "hyperlink"},
+            "报告类别": {"type": "dropdown_list", "list": ["正式报告", "补充报告", "补充报告-亚效等位基因", "补充报告-线粒体", "补充报告-VUS"]}
+        },
+        "CNV": {
+            "P0": {"type": "hyperlink_split"},
+            "P1": {"type": "hyperlink_split"},
+            "P2": {"type": "hyperlink_split"},
+            "P3": {"type": "hyperlink_split"},
+            "P4": {"type": "hyperlink_split"},
+            "P5": {"type": "hyperlink_split"},
+            "P6": {"type": "hyperlink_split"},
+            "P7": {"type": "hyperlink_split"},
+            "P8": {"type": "hyperlink_split"},
+            "P9": {"type": "hyperlink_split"},
+            "P10": {"type": "hyperlink_split"}
+        },
+        "补充实验": {
+            "图片链接": {"type": "hyperlink_split"}
+        }
+    }
+}

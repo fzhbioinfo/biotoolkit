@@ -1,0 +1,8 @@
+args <- commandArgs(trailingOnly = TRUE)
+library(DNAcopy)
+df <- read.table(file = args[1], header = TRUE, sep = '\t')
+df_cna <- CNA(cbind(df$log2ratio), df$chrom, df$start, data.type="logratio", presorted=T)
+df_cna_smooth <- smooth.CNA(df_cna)
+df_cna_smooth_seg <- segment(df_cna_smooth)
+df_cna_smooth_seg_p <- segments.p(df_cna_smooth_seg)
+write.table(df_cna_smooth_seg_p, file = args[2], quote = FALSE, sep = '\t', row.names = FALSE)

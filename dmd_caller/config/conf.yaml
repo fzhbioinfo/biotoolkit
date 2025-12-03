@@ -1,0 +1,10 @@
+dup: 1.3
+del: 0.75
+hom_del: 0.2
+dup_male_x: 1.5
+del_male_x: 0.3
+dup_single: 1.4
+del_single: 0.65
+nearby_distance: 0.1
+nearby_recall_distance: 0.05
+nice_cv: 0.1
