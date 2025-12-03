@@ -1,0 +1,16 @@
+Order	Name	Type	Parents	SplitBy	Resources
+1	Filter	single	None	barcode	-l vf=2G,p=3,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+2	Mem	single	Filter	barcode	-l vf=12G,p=12,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+3	SortSam	single	Mem	barcode	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+4	Merge	single	SortSam	chromosome	-l vf=1G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -q b2c_rd.q
+5	MarkDuplicates	single	Merge	chromosome	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+6	BaseRecalibrator	single	MarkDuplicates	chromosome	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+7	Stat	single	BaseRecalibrator	None	-l vf=20G,p=5,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+7	HaplotypeCaller	single	BaseRecalibrator	chromosome	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+8	CombineGVCFs	family	HaplotypeCaller	chromosome	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+9	GenotypeGVCFs	family	CombineGVCFs	chromosome	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+10	Concat	family	GenotypeGVCFs	None	-l vf=3G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -q b2c_rd.q
+11	VariantRecalibrator	family	Concat	mut_type	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+12	MergeVcfs	family	VariantRecalibrator	None	-l vf=38G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+13	Anno	family	MergeVcfs	None	-l vf=10G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+14	Report	family	Stat,Anno	None	-l vf=1G,p=1,h='!tj-compute-31-5' -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
