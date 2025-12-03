@@ -1,0 +1,19 @@
+Order	Name	Type	is_lfr	Parents	SplitBy	Resources
+1	splitBarcode	single	yes	None	None	-l vf=8G,p=4 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+2	longranger	single	yes	splitBarcode	None	-l vf=372G,p=62 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+3	HaplotypeCaller.stLFR	single	yes	longranger	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+3	Stat.stLFR	single	yes	longranger	None	-l vf=20G,p=5 -P P18Z15000N0162 -S /bin/bash -q b2c_rd.q
+4	Report.stLFR	family	yes	Stat.stLFR	None	-l vf=1G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+1	Filter	single	no	None	barcode	-l vf=2G,p=3 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+2	Mem	single	no	Filter	barcode	-l vf=10G,p=12 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+3	SortSam	single	no	Mem	barcode	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+4	Merge	single	no	SortSam	chromosome	-l vf=1G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+5	MarkDuplicates	single	no	Merge	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+6	BaseRecalibrator	single	no	MarkDuplicates	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+7	Stat	single	no	BaseRecalibrator,Stat.stLFR	None	-l vf=20G,p=5 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+7	HaplotypeCaller	single	no	BaseRecalibrator	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+8	CombineGVCFs	family	no	HaplotypeCaller,HaplotypeCaller.stLFR	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+9	GenotypeGVCFs	family	no	CombineGVCFs	chromosome	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+10	MergeVcfs	family	no	GenotypeGVCFs	None	-l vf=38G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q
+11	Anno	family	no	MergeVcfs,longranger	None	-l vf=5G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd.q
+12	Report	family	no	Anno,Stat,Stat.stLFR,Report.stLFR	None	-l vf=1G,p=1 -P P18Z15000N0162 -S /bin/bash -q b2c_rd_s1.q,b2c_rd.q

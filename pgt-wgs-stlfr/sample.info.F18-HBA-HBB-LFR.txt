@@ -1,0 +1,21 @@
+sample	sampleID	fq1	gender	gene	var_type	variant	is_lfr
+Mother	20B10182907	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/stLFR/20220519/V350050865/L03/V350050865_L03_read_1.fq.gz	F	HBA	cnv	chr16:215400-234700	yes
+Mother	20B10182907	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/stLFR/20220519/V350050865/L04/V350050865_L04_read_1.fq.gz	F	HBA	cnv	chr16:215400-234700	yes
+Father	20B10182908	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/stLFR/20220329/V350054512/L01/V350054512_L01_read_1.fq.gz	M	HBA,HBB	cnv,snv	chr16:215400-234700,11:5247153:G:A	yes
+Father	20B10182908	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/stLFR/20220329/V350054512/L02/V350054512_L02_read_1.fq.gz	M	HBA,HBB	cnv,snv	chr16:215400-234700,11:5247153:G:A	yes
+Embryo1	20D13056816	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_41_1.fq.gz	unknown	.	.		no
+Embryo1	20D13056816	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_41_1.fq.gz	unknown	.	.		no
+Embryo1	20D13056816	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_42_1.fq.gz	unknown	.	.		no
+Embryo1	20D13056816	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_42_1.fq.gz	unknown	.	.		no
+Embryo2	20D13056818	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_43_1.fq.gz	unknown	.	.		no
+Embryo2	20D13056818	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_43_1.fq.gz	unknown	.	.		no
+Embryo2	20D13056818	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_44_1.fq.gz	unknown	.	.		no
+Embryo2	20D13056818	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_44_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_45_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_45_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_46_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_46_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_47_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_47_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L01/V350040736_L01_48_1.fq.gz	unknown	.	.		no
+Embryo3	20D13056820	/jdfstj1/B2C_RD_P2/USR/fangzhonghai/project/PGT/rawData/V350040736/L02/V350040736_L02_48_1.fq.gz	unknown	.	.		no

@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+
+pipeline=$1
+work_dir=$2
+sample=$3
+chromosome=$4
+
+export PATH=$pipeline/tools:$PATH
+gatk=$pipeline/tools/gatk
+genome=$pipeline/database/hg19/hg19_chM_male_mask.fa
+bed=$pipeline/etc/$chromosome.bed
+
+gvcf_dir=$work_dir/$sample/gvcf
+mkdir -p $gvcf_dir
+mkdir -p $work_dir/javatmp
+bam=$work_dir/LFR/$sample/outs/phased_possorted_bam.bam
+script=$(basename $0)
+pipe=`echo $script|sed 's/\.sh//g'`
+complete=$work_dir/shell/${pipe}-${sample}-${chromosome}.sh.complete
+
+if [ -e $complete ]; then
+    echo "gatk HaplotypeCaller $chromosome complete and skip"
+else
+    echo "`date` gatk HaplotypeCaller $chromosome Start"
+    $gatk HaplotypeCaller \
+    --tmp-dir $work_dir/javatmp -R $genome -ERC GVCF -L $bed \
+    -I $bam -O $gvcf_dir/$chromosome.gvcf.gz
+    echo "`date` gatk HaplotypeCaller $chromosome Done"
+fi
+echo - | awk -v S=$SECONDS -v sample=$sample -v chromosome=$chromosome -v pipe=$pipe '{printf "%s-%s-%s\t%02d:%02d:%02d\n",pipe,sample,chromosome,S/(60*60),S%(60*60)/60,S%60}' >> $work_dir/log
+touch $complete
