@@ -1,0 +1,67 @@
+mlpa_smn_caller算法和质控原理
+
+## 1. 峰图检测阶段的QC
+
+### 内参峰检测
+- **标准**：内参峰数量必须等于已知的标准片段数量(`len(standard_size)`)
+- **失败标记**：`'standard_detect_fail'`
+- 如果内参峰数量不足，直接标记失败
+
+### 片段大小拟合QC
+- **线性拟合R²阈值**：`r_square_threshold = 0.99`
+- **内参峰拟合失败**：`'standard_fit_sizing_fail'`
+- **探针峰拟合失败**：`'probe_fit_sizing_fail'`
+
+### 探针检测QC
+- **参考探针**：不允许有任何未检测到的参考探针
+- **测试探针**：未检测到的测试探针数量不能超过 `probe_detect_fail_count_threshold = 3`
+- **失败标记**：`'probe_detect_fail'`
+
+## 2. DQ计算阶段的QC
+
+### 参考样本数量检查
+- 可用的参考样本必须≥3例
+- 否则程序直接退出
+
+### 参考样本质量评估
+```python
+ref_sample_qc = 'pass'
+# 检查每个探针的DQ置信区间是否在正常范围内[0.7, 1.3]
+if dq_dic_[probe]['low'] < loss or dq_dic_[probe]['up'] > gain:
+    ref_sample_qc = 'ref_sample_fail'
+```
+
+## 3. 拷贝数分析阶段的QC
+
+### 参考探针异常检测
+```python
+abnormal_ref_probe_thres = 2          # 异常参考探针阈值
+abnormal_ref_probe_interval_thres = 8 # 异常区间阈值
+high_overlap_ref_probe_thres = 5      # 高重叠阈值
+```
+
+#### QC规则：
+1. **异常参考探针数量** ≥ 2 → `'ref_probe_fail'`
+2. **异常区间数量** ≥ 8 且 **高重叠探针数量** ≤ 5 → `'ref_probe_fail'`
+3. **异常参考探针数量** ≥ 1 且 **高重叠探针数量** ≤ 6 → `'ref_probe_fail'`
+
+### 最终QC汇总
+- 所有QC失败原因用分号连接
+- 如果任何QC失败，SMN拷贝数结果标记为'.'
+
+## 4. 拷贝数判定阈值
+
+```python
+hom_del_ratio = 0.2           # 纯合缺失
+het_del_ratio_low = 0.35      # 杂合缺失下限
+het_del_ratio_up = 0.65       # 杂合缺失上限  
+normal_ratio_low = 0.8        # 正常下限
+normal_ratio_up = 1.3         # 正常上限
+```
+
+## QC逻辑特点
+
+1. **层级递进**：从原始信号→片段拟合→探针检测→DQ计算→拷贝数分析，层层把关
+2. **多重验证**：使用R²、峰数量、探针检测率等多个指标
+3. **参考样本依赖**：严重依赖参考样本的质量和数量
+4. **保守策略**：任何关键步骤失败都会导致最终结果不可用
